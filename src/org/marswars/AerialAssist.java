@@ -35,6 +35,7 @@ public class AerialAssist extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
+        CommandBase.drive.setWheelbase(21.5 / 2, 21.5 / 2);
     }
 
     public void autonomousInit() {
@@ -54,7 +55,7 @@ public class AerialAssist extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+        //autonomousCommand.cancel();
     }
 
     /**

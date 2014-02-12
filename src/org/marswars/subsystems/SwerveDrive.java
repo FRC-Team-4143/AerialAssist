@@ -95,7 +95,7 @@ public class SwerveDrive extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new CrabDrive());
+        //setDefaultCommand(new CrabDrive());
     }
 
     public void toggleFrontBack() {
@@ -277,10 +277,13 @@ public class SwerveDrive extends Subsystem {
     public boolean unwind() {
         boolean retval = false;
         isUnwinding = true;
-        retval = unwindWheel(potSteerFL, pidFL)
-                || unwindWheel(potSteerFR, pidFR)
-                || unwindWheel(potSteerRL, pidRL)
-                || unwindWheel(potSteerRR, pidRR);
+        retval = unwindWheel(potSteerFL, pidFL);
+        if (unwindWheel(potSteerFR, pidFR))
+            retval = true;
+        if (unwindWheel(potSteerRL, pidRL))
+            retval = true;
+        if (unwindWheel(potSteerRR, pidRR))
+            retval = true;
         isUnwinding = false;
         return retval;
     }
@@ -327,7 +330,7 @@ public class SwerveDrive extends Subsystem {
             }
             pid.setSetpoint(temp);
             return true;
-        } else if (turns <= 1) {
+        } else if (turns <= -1) {
             temp = wheel.getAverageVoltage() + 1.0;
             if (temp > 5.0) {
                 temp = temp - 5.0;

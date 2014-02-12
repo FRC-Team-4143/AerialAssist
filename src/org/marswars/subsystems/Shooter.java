@@ -21,12 +21,11 @@ public class Shooter extends PIDSubsystem {
         this.setAbsoluteTolerance(0.2);
         getPIDController().setContinuous(true);
         this.setInputRange(0.2, 4.8);
-        //pot.startLiveWindowMode();
-        //LiveWindow.addSensor("Shooter", "Pot", pot);
-        //LiveWindow.addActuator("Shooter", "Motor", motor);
+        LiveWindow.addSensor("Shooter", "Pot", pot);
+        LiveWindow.addActuator("Shooter", "Motor", motor);
+        LiveWindow.addActuator("Shooter", "PID", getPIDController());
         this.enable(); //enables the portPotShooter
         //this.setSetpoint(0.2); //Sets the CAM to the ready position for launching when robot is  first enabled
-
     }
 
     /////Print out Position/////

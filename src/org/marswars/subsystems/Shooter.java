@@ -3,6 +3,7 @@ package org.marswars.subsystems;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.marswars.RobotMap;
@@ -45,21 +46,12 @@ public class Shooter extends PIDSubsystem {
     }
 
     public void launch(double speed) {
-        double endPoint = 2.5;
         this.disable();
-
         motor.set(speed);/* <-<-<- THIS VALUE CONTROLS SPEED OF SHOOTER*/
-
-        try {
-            this.wait(2);/* <-<-<- THIS VALUE CONTROLS HOW LONG THE MOTOR IS ACTIVE*/
-        } catch (InterruptedException ex) {
-            System.out.println("ERROR!");
-        }
-
+        Timer.delay(Preferences.getInstance().getDouble("Launch time", 1.));
         motor.set(0.0);
         this.enable();
-        this.setSetpointRelative(endPoint - this.getPosition());
-
+        this.setSetpoint(pot.getVoltage());
     }
 
     public void initDefaultCommand() {

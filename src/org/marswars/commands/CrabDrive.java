@@ -1,5 +1,7 @@
 package org.marswars.commands;
 
+import com.sun.squawk.util.MathUtils;
+
 /**
  *
  * @author bradmiller
@@ -17,7 +19,9 @@ public class CrabDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        drive.Crab(oi.getJoystickRightX() / 2., -oi.getJoystickLeftY(),
+        double twist = oi.getJoystickRightX();
+        twist = twist / Math.abs(twist) * MathUtils.pow(twist, 2);
+        drive.Crab(twist, -oi.getJoystickLeftY(),
                 oi.getJoystickLeftX(), Math.abs(oi.getTriggers()));
     }
 

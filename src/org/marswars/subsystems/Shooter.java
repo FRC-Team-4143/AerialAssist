@@ -50,8 +50,9 @@ public class Shooter extends PIDSubsystem {
         motor.set(speed);/* <-<-<- THIS VALUE CONTROLS SPEED OF SHOOTER*/
         Timer.delay(Preferences.getInstance().getDouble("Launchtime", 1.));
         motor.set(0.0);
+        Timer.delay(0.5);
         this.enable();
-        this.setSetpoint(pot.getVoltage());
+        this.setSetpointRelative(0.);
     }
 
     public void initDefaultCommand() {

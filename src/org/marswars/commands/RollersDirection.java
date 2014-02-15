@@ -1,40 +1,32 @@
-
 package org.marswars.commands;
 
-
 public class RollersDirection extends CommandBase {
-    
+
     boolean isExecuted = false;
-    
+
     public RollersDirection() {
-        if (!isExecuted) {
-            requires(pickup);   
-            }
-        isExecuted = true;
+
+        requires(pickup);
     }
 
-    
     protected void initialize() {
     }
 
-   
     protected void execute() {
-        
-        pickup.toggleForward();
+        if (!isExecuted) {
+            pickup.toggleForward();
+        }
+        isExecuted = true;
     }
-        
- 
+
     protected boolean isFinished() {
-        return false;
+        return isExecuted;
     }
 
-    
     protected void end() {
-        
+        isExecuted = false;
     }
 
-   
     protected void interrupted() {
-        
     }
 }

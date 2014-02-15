@@ -13,8 +13,8 @@ public class Pickup extends Subsystem {
 
     private Talon motor = new Talon(RobotMap.portMotorPickup);
     //private Talon motorRight = new Talon(RobotMap.portMotorPickupR);
-    private Relay rollerLeft = new Relay(RobotMap.portRelayPickupL);
-    private Relay rollerRight = new Relay(RobotMap.portRelayPickupR);
+    private Relay rollerLeft = new Relay(RobotMap.portRelayPickupL, Relay.Direction.kBoth);
+    private Relay rollerRight = new Relay(RobotMap.portRelayPickupR, Relay.Direction.kBoth);
     private boolean forward = true;
     private boolean left = false;
     private boolean right = false;
@@ -48,8 +48,11 @@ public class Pickup extends Subsystem {
         //motorRight.set(0.);
     }
 
-    public void stopRelays() {
+    public void stopLeft() {
         rollerLeft.set(Relay.Value.kOff);
+    }
+    
+    public void stopRight() {
         rollerRight.set(Relay.Value.kOff);
     }
     

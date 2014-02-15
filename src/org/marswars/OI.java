@@ -1,6 +1,7 @@
 
 package org.marswars;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.marswars.commands.Launch;
@@ -33,7 +34,7 @@ import org.marswars.utilities.XboxController;
 public class OI {
     private XboxController xbox1 = new XboxController(1);
     private XboxController xbox2 = new XboxController(2);
-    private double deadZone = 0.15;
+    private double deadZone = Preferences.getInstance().getDouble("Deadzone", 0.15);
     
     public OI() {
         // Controller 1

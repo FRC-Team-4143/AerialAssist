@@ -6,7 +6,6 @@ public class RollerRight extends CommandBase {
     
     
     public RollerRight() {
-        
         requires(pickup);       
     }
 
@@ -16,7 +15,6 @@ public class RollerRight extends CommandBase {
 
    
     protected void execute() {
-        
         pickup.rightRoller();
     }
         
@@ -27,11 +25,11 @@ public class RollerRight extends CommandBase {
 
     
     protected void end() {
-        pickup.stopRelays();
+        pickup.stopRight();
     }
 
    
     protected void interrupted() {
-        pickup.stopRelays();
+        pickup.stopRight();
     }
 }

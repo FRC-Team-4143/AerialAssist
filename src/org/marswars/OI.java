@@ -4,9 +4,14 @@ package org.marswars;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.marswars.commands.Launch;
+import org.marswars.commands.PickupClose;
+import org.marswars.commands.PickupOpen;
 import org.marswars.commands.ReadPot;
 import org.marswars.commands.ResetTurns;
 import org.marswars.commands.RetrieveOffsets;
+import org.marswars.commands.RollerLeft;
+import org.marswars.commands.RollerRight;
+import org.marswars.commands.RollersDirection;
 import org.marswars.commands.SMDB;
 import org.marswars.commands.SetCamOne;
 import org.marswars.commands.SetCamThree;
@@ -25,12 +30,20 @@ import org.marswars.utilities.XboxController;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    private XboxController xbox = new XboxController(1);
+    private XboxController xbox1 = new XboxController(1);
+    private XboxController xbox2 = new XboxController(2);
     private double deadZone = 0.15;
     
     public OI() {
-        new JoystickButton(xbox, XboxController.ButtonType.kY.value).whenPressed(new ToggleRobotFront());
-        new JoystickButton(xbox, XboxController.ButtonType.kX.value).whileHeld(new ToggleLock());
+        new JoystickButton(xbox1, XboxController.ButtonType.kY.value).whenPressed(new ToggleRobotFront());
+        new JoystickButton(xbox1, XboxController.ButtonType.kX.value).whileHeld(new ToggleLock());
+        new JoystickButton(xbox2, XboxController.ButtonType.kL.value).whileHeld(new RollerLeft());
+        new JoystickButton(xbox2, XboxController.ButtonType.kR.value).whileHeld(new RollerRight());
+        new JoystickButton(xbox2, XboxController.ButtonType.kY.value).whenPressed(new RollersDirection());
+        new JoystickButton(xbox2, XboxController.ButtonType.kA.value).whileHeld(new PickupOpen());
+        new JoystickButton(xbox2, XboxController.ButtonType.kB.value).whileHeld(new PickupClose());
+        
+        
         SmartDashboard.putData("Read Pot", new ReadPot());
         SmartDashboard.putData("Position 1", new SetCamOne());
         SmartDashboard.putData("Position 2", new SetCamTwo());
@@ -47,39 +60,39 @@ public class OI {
     }
     
     public double getJoystickLeftX() {
-        if (Math.abs(xbox.getRawAxis(1)) < deadZone) {
+        if (Math.abs(xbox1.getRawAxis(1)) < deadZone) {
             return 0;
         } else {
-            return xbox.getRawAxis(1);
+            return xbox1.getRawAxis(1);
         }
     }
 
     public double getJoystickLeftY() {
-        if (Math.abs(xbox.getRawAxis(2)) < deadZone) {
+        if (Math.abs(xbox1.getRawAxis(2)) < deadZone) {
             return 0;
         } else {
-            return xbox.getRawAxis(2);
+            return xbox1.getRawAxis(2);
         }
     }
 
     public double getJoystickRightX() {
-        if (Math.abs(xbox.getRawAxis(4)) < deadZone) {
+        if (Math.abs(xbox1.getRawAxis(4)) < deadZone) {
             return 0;
         } else {
-            return xbox.getRawAxis(4);
+            return xbox1.getRawAxis(4);
         }
     }
 
     public double getTriggers() {
-        if (Math.abs(xbox.getRawAxis(3)) < deadZone) {
+        if (Math.abs(xbox1.getRawAxis(3)) < deadZone) {
             return 0;
         } else {
-            return xbox.getRawAxis(3);
+            return xbox1.getRawAxis(3);
         }
     }
     
     public double getDPadX() {
-        return xbox.getRawAxis(6);
+        return xbox1.getRawAxis(6);
     }
 }
 

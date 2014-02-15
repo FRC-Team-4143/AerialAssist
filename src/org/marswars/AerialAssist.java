@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.marswars.commands.CommandBase;
+import org.marswars.commands.SMDB;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,7 @@ import org.marswars.commands.CommandBase;
 public class AerialAssist extends IterativeRobot {
 
     Command autonomousCommand;
+    private Command smartDash;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -36,6 +38,13 @@ public class AerialAssist extends IterativeRobot {
         // Initialize all subsystems
         CommandBase.init();
         CommandBase.drive.setWheelbase(21.5 / 2, 21.5 / 2);
+        smartDash = new SMDB();
+        smartDash.setRunWhenDisabled(true);
+        smartDash.start();
+    }
+    
+    public void disabledPeriodic() {
+        smartDash.start();
     }
 
     public void autonomousInit() {

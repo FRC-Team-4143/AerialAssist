@@ -11,7 +11,6 @@ public class SMDB extends CommandBase {
 
     public SMDB() {
         // Use requires() here to declare subsystem dependencies
-         setRunWhenDisabled(true);
     }
 
     // Called just before this Command runs the first time

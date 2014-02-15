@@ -18,8 +18,6 @@ public class Pickup extends Subsystem {
     private boolean forward = true;
     private boolean left = false;
     private boolean right = false;
-    private int running = 0;
-
     public Pickup() {
         LiveWindow.addActuator("Pickup", "Left Motor", motor);
         //LiveWindow.addActuator("Pickup", "Right Motor", motorRight);
@@ -53,7 +51,6 @@ public class Pickup extends Subsystem {
     public void stopRelays() {
         rollerLeft.set(Relay.Value.kOff);
         rollerRight.set(Relay.Value.kOff);
-        running = 0;
     }
     
     public void toggleForward() {
@@ -80,28 +77,12 @@ public class Pickup extends Subsystem {
     }
     
     public void rightRoller() {
-        if (left) {
-            rollerLeft.set(Relay.Value.kOff);
+        if (right) {
+            rollerRight.set(Relay.Value.kOff);
         } else {
-            setRoller(rollerLeft);
+            setRoller(rollerRight);
         }
-        left = !left;
-    }
-
-    public void in()  {
-        rollerLeft.set(Relay.Value.kForward);
-        rollerRight.set(Relay.Value.kForward);
-        running = 1;
-    }
-
-    public void out()  {
-        rollerLeft.set(Relay.Value.kReverse);
-        rollerRight.set(Relay.Value.kReverse);
-        running = -1;
-    }
-
-    public int isRunning() {
-        return running;
+        right = !right;
     }
 }
 

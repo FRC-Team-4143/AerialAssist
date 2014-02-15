@@ -10,7 +10,7 @@ public class PickupOpen extends CommandBase {
     }
 
     protected void execute() {
-        pickup.out();
+        pickup.open();
     }
 
     protected boolean isFinished() {

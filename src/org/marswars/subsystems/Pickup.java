@@ -15,6 +15,9 @@ public class Pickup extends Subsystem {
     //private Talon motorRight = new Talon(RobotMap.portMotorPickupR);
     private Relay rollerLeft = new Relay(RobotMap.portRelayPickupL);
     private Relay rollerRight = new Relay(RobotMap.portRelayPickupR);
+    private boolean forward = true;
+    private boolean left = false;
+    private boolean right = false;
     private int running = 0;
 
     public Pickup() {
@@ -31,14 +34,14 @@ public class Pickup extends Subsystem {
     public void open() {
         motor.set(Preferences.getInstance().getDouble("Pickupspeed", 0.5));
         //motorRight.set(Preferences.getInstance().getDouble("Pickupspeed", 0.5));
-        Timer.delay(Preferences.getInstance().getDouble("Pickuptime", 1.));
+        //Timer.delay(Preferences.getInstance().getDouble("Pickuptime", 1.));
         stopMotors();
     }
 
     public void close() {
         motor.set(-1 * Preferences.getInstance().getDouble("Pickupspeed", 0.5));
         //motorRight.set(-1 * Preferences.getInstance().getDouble("Pickupspeed", 0.5));
-        Timer.delay(Preferences.getInstance().getDouble("Pickuptime", 1.));
+        //Timer.delay(Preferences.getInstance().getDouble("Pickuptime", 1.));
         stopMotors();
     }
 
@@ -51,6 +54,38 @@ public class Pickup extends Subsystem {
         rollerLeft.set(Relay.Value.kOff);
         rollerRight.set(Relay.Value.kOff);
         running = 0;
+    }
+    
+    public void toggleForward() {
+        forward = !forward;
+        setRoller(rollerLeft);
+        setRoller(rollerRight);
+    }
+    
+    private void setRoller(Relay roller) {
+        if (forward) {
+            roller.set(Relay.Value.kForward);
+        } else {
+            roller.set(Relay.Value.kReverse);
+        }
+    }
+    
+    public void leftRoller() {
+        if (left) {
+            rollerLeft.set(Relay.Value.kOff);
+        } else {
+            setRoller(rollerLeft);
+        }
+        left = !left;
+    }
+    
+    public void rightRoller() {
+        if (left) {
+            rollerLeft.set(Relay.Value.kOff);
+        } else {
+            setRoller(rollerLeft);
+        }
+        left = !left;
     }
 
     public void in()  {

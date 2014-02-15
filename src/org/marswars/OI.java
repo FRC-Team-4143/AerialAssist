@@ -4,6 +4,7 @@ package org.marswars;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.marswars.commands.Launch;
+import org.marswars.commands.Pass;
 import org.marswars.commands.PickupClose;
 import org.marswars.commands.PickupOpen;
 import org.marswars.commands.ReadPot;
@@ -37,6 +38,8 @@ public class OI {
     public OI() {
         new JoystickButton(xbox1, XboxController.ButtonType.kY.value).whenPressed(new ToggleRobotFront());
         new JoystickButton(xbox1, XboxController.ButtonType.kX.value).whileHeld(new ToggleLock());
+        new JoystickButton(xbox1, XboxController.ButtonType.kA.value).whileHeld(new Launch());
+        new JoystickButton(xbox1, XboxController.ButtonType.kB.value).whileHeld(new Pass());
         new JoystickButton(xbox2, XboxController.ButtonType.kL.value).whileHeld(new RollerLeft());
         new JoystickButton(xbox2, XboxController.ButtonType.kR.value).whileHeld(new RollerRight());
         new JoystickButton(xbox2, XboxController.ButtonType.kY.value).whenPressed(new RollersDirection());

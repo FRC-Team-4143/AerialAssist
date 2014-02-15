@@ -18,7 +18,7 @@ public class Shooter extends PIDSubsystem {
 
     /////Set Potentiometer Stuff/////
     public Shooter() {
-        super("Shooter", Preferences.getInstance().getDouble("P", -0.5), 0.0, Preferences.getInstance().getDouble("D", 0.2));
+        super("Shooter", Preferences.getInstance().getDouble("ShooterP", -0.5), 0.0, Preferences.getInstance().getDouble("ShooterD", 0.2));
         this.setAbsoluteTolerance(0.2);
         getPIDController().setContinuous(true);
         this.setInputRange(0.2, 4.8);

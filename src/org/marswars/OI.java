@@ -36,17 +36,20 @@ public class OI {
     private double deadZone = 0.15;
     
     public OI() {
+        // Controller 1
         new JoystickButton(xbox1, XboxController.ButtonType.kY.value).whenPressed(new ToggleRobotFront());
         new JoystickButton(xbox1, XboxController.ButtonType.kX.value).whileHeld(new ToggleLock());
-        new JoystickButton(xbox1, XboxController.ButtonType.kA.value).whileHeld(new Launch());
-        new JoystickButton(xbox1, XboxController.ButtonType.kB.value).whileHeld(new Pass());
+        new JoystickButton(xbox1, XboxController.ButtonType.kA.value).whenPressed(new Launch());
+        new JoystickButton(xbox1, XboxController.ButtonType.kB.value).whenPressed(new Pass());
+        
+        // Controller 2
         new JoystickButton(xbox2, XboxController.ButtonType.kL.value).whileHeld(new RollerLeft());
         new JoystickButton(xbox2, XboxController.ButtonType.kR.value).whileHeld(new RollerRight());
         new JoystickButton(xbox2, XboxController.ButtonType.kY.value).whenPressed(new RollersDirection());
         new JoystickButton(xbox2, XboxController.ButtonType.kA.value).whileHeld(new PickupOpen());
         new JoystickButton(xbox2, XboxController.ButtonType.kB.value).whileHeld(new PickupClose());
         
-        
+        // Smart Dashboard
         SmartDashboard.putData("Read Pot", new ReadPot());
         SmartDashboard.putData("Position 1", new SetCamOne());
         SmartDashboard.putData("Position 2", new SetCamTwo());

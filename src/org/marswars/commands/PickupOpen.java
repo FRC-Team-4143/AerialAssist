@@ -1,40 +1,27 @@
-
 package org.marswars.commands;
 
-
 public class PickupOpen extends CommandBase {
-    
-    boolean isExecuted = false;
-    
+
     public PickupOpen() {
-        
-        requires(pickup);       
+        requires(pickup);
     }
 
-    
     protected void initialize() {
     }
 
-   
     protected void execute() {
-        
-        if (!isExecuted) {
-            pickup.out();
-        }
-        isExecuted = true;  
+        pickup.out();
     }
-        
- 
+
     protected boolean isFinished() {
-        return isExecuted;
+        return false;
     }
 
-    
     protected void end() {
-        isExecuted = false;
+        pickup.stopMotors();
     }
 
-   
     protected void interrupted() {
+        pickup.stopMotors();
     }
 }

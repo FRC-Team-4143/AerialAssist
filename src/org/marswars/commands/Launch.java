@@ -18,7 +18,7 @@ public class Launch extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (!isExecuted) {
-            shooter.launch(Preferences.getInstance().getDouble("Launch speed", 1.0));
+            shooter.launch(Preferences.getInstance().getDouble("Launchspeed", 0.3));
         }
         isExecuted = true;
         

@@ -18,7 +18,7 @@ public class Shooter extends PIDSubsystem {
 
     /////Set Potentiometer Stuff/////
     public Shooter() {
-        super("Shooter", 1.0, 0.0, 0.2);
+        super("Shooter", Preferences.getInstance().getDouble("P", -0.5), 0.0, Preferences.getInstance().getDouble("D", 0.2));
         this.setAbsoluteTolerance(0.2);
         getPIDController().setContinuous(true);
         this.setInputRange(0.2, 4.8);
@@ -37,18 +37,18 @@ public class Shooter extends PIDSubsystem {
     /////Sets CAM to ready position for launching/////
     public void setReadyPosition(int position) {
         if (position == 1) {
-            this.setSetpointRelative(Preferences.getInstance().getDouble("Position 1", 1.));/* <-<-<- THIS VALUE WILL CHANGE WHEN I CAN TEST ROBOT*/
+            this.setSetpoint(Preferences.getInstance().getDouble("Position1", 2.5));/* <-<-<- THIS VALUE WILL CHANGE WHEN I CAN TEST ROBOT*/
         } else if (position == 2) {
-            this.setSetpointRelative(Preferences.getInstance().getDouble("Position 2", 2.));/* <-<-<- THIS VALUE WILL CHANGE WHEN I CAN TEST ROBOT*/
+            this.setSetpoint(Preferences.getInstance().getDouble("Position2", 3.7));/* <-<-<- THIS VALUE WILL CHANGE WHEN I CAN TEST ROBOT*/
         } else if (position == 3) {
-            this.setSetpointRelative(Preferences.getInstance().getDouble("Position 3", 3.));/* <-<-<- THIS VALUE WILL CHANGE WHEN I CAN TEST ROBOT*/
+            this.setSetpoint(Preferences.getInstance().getDouble("Position3", 1.5));/* <-<-<- THIS VALUE WILL CHANGE WHEN I CAN TEST ROBOT*/
         }
     }
 
     public void launch(double speed) {
         this.disable();
         motor.set(speed);/* <-<-<- THIS VALUE CONTROLS SPEED OF SHOOTER*/
-        Timer.delay(Preferences.getInstance().getDouble("Launch time", 1.));
+        Timer.delay(Preferences.getInstance().getDouble("Launchtime", 1.));
         motor.set(0.0);
         this.enable();
         this.setSetpoint(pot.getVoltage());

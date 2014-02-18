@@ -1,8 +1,10 @@
 package org.marswars.commands;
 
-public class PickupClose extends CommandBase {
+public class BackOpen extends CommandBase {
+    
+    private boolean isExecuted = false;
 
-    public PickupClose() {
+    public BackOpen() {
         requires(pickup);
     }
 
@@ -10,18 +12,20 @@ public class PickupClose extends CommandBase {
     }
 
     protected void execute() {
-        pickup.close();
+        if (!isExecuted)
+            pickup.openBack();
+        isExecuted = true;
     }
 
     protected boolean isFinished() {
-        return false;
+        return isExecuted;
     }
 
     protected void end() {
-        pickup.stopWings();
+        isExecuted = false;
     }
 
     protected void interrupted() {
-        pickup.stopWings();
+
     }
 }

@@ -18,10 +18,10 @@ public class PickupOpen extends CommandBase {
     }
 
     protected void end() {
-        pickup.stopMotors();
+        pickup.stopWings();
     }
 
     protected void interrupted() {
-        pickup.stopMotors();
+        pickup.stopWings();
     }
 }

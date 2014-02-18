@@ -19,6 +19,7 @@ import org.marswars.commands.SetCamOne;
 import org.marswars.commands.SetCamThree;
 import org.marswars.commands.SetCamTwo;
 import org.marswars.commands.SetWheelOffsets;
+import org.marswars.commands.StopCompressor;
 import org.marswars.commands.ToggleLock;
 import org.marswars.commands.ToggleRobotFront;
 import org.marswars.commands.UnwindFL;
@@ -64,6 +65,7 @@ public class OI {
         SmartDashboard.putData("Unwind RL", new UnwindRL());
         SmartDashboard.putData("Unwind RR", new UnwindRR());
         SmartDashboard.putData("Retrieve Offsets", new RetrieveOffsets());
+        SmartDashboard.putData("Stop Compressor", new StopCompressor());
     }
     
     public double getJoystickLeftX() {

@@ -25,7 +25,7 @@ public class RobotMap {
     public static final int portPotSteerFR = 1;
     public static final int portPotSteerRL = 3;
     public static final int portPotSteerRR = 2;
-    public static final int portPotSteerFL = 3;
+    public static final int portPotSteerFL = 4;
     
     public static final int portMotorDriveFL = 3;
     public static final int portMotorDriveFR = 4;
@@ -42,11 +42,14 @@ public class RobotMap {
     
     public final static int portRelayPickupL = 3;
     public final static int portRelayPickupR = 1;
+    
     public final static int portSolenoidLeftRetract = 1;
-    public final static int portSolenoidLeftExtend = 1;
-    public final static int portSolenoidRightRetract = 1;
-    public final static int portSolenoidRightExtend = 1;
-    public final static int portSolenoidBackExtend = 1;
-    public final static int portCompressorPressure = 1;
-    public final static int portCompressorRelay = 1;
+    public final static int portSolenoidLeftExtend = 2;
+    public final static int portSolenoidRightRetract = 3;
+    public final static int portSolenoidRightExtend = 4;
+    public final static int portSolenoidBackExtend = 5;
+    public final static int portCompressorPressure = 6;
+    public final static int portCompressorRelay = 2;
+    
+    public final static int portPressureSwitch = 1;
 }

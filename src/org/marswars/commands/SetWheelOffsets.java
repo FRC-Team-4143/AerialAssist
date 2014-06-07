@@ -9,7 +9,7 @@ public class SetWheelOffsets extends CommandBase {
     private boolean m_Executed = false;
 
     public SetWheelOffsets() {
-        // Use requires() here to declare subsystem dependencies
+        requires(drive);
     }
 
     // Called just before this Command runs the first time

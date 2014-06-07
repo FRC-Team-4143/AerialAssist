@@ -18,22 +18,22 @@ public class RobotMap {
     public static final double F = 0.0;
     public static final double POTMIN = 0.0;
     public static final double POTMAX = 5.0;
-    public static final double STEERPOW = 0.75;
+    public static final double STEERPOW = 1.0;
     public static final double TOLERANCE = 0.2;
     public static final double PERIOD = 0.02;
     
     public static final int portPotSteerFR = 1;
-    public static final int portPotSteerRL = 3;
+    public static final int portPotSteerRL = 4;
     public static final int portPotSteerRR = 2;
-    public static final int portPotSteerFL = 4;
+    public static final int portPotSteerFL = 3;
     
     public static final int portMotorDriveFL = 3;
     public static final int portMotorDriveFR = 4;
     public static final int portMotorDriveRR = 1;
     public static final int portMotorDriveRL = 2;
     
-    public static final int portMotorSteerFR = 8;
-    public static final int portMotorSteerRL = 6;
+    public static final int portMotorSteerFR = 6;
+    public static final int portMotorSteerRL = 8;
     public static final int portMotorSteerRR = 5;
     public static final int portMotorSteerFL = 7;
     
@@ -48,7 +48,8 @@ public class RobotMap {
     public final static int portSolenoidRightRetract = 3;
     public final static int portSolenoidRightExtend = 4;
     public final static int portSolenoidBackExtend = 5;
-    public final static int portCompressorPressure = 6;
+    public final static int portSolenoidBackRetract = 6;
+    public final static int portCompressorPressure = 1;
     public final static int portCompressorRelay = 2;
     
     public final static int portPressureSwitch = 1;

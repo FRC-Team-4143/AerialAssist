@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.marswars.utilities.AnalogChannelVolt;
 import org.marswars.RobotMap;
@@ -23,10 +23,10 @@ public class SwerveDrive extends Subsystem {
     public AnalogChannelVolt potSteerFR = new AnalogChannelVolt(RobotMap.portPotSteerFR);
     public AnalogChannelVolt potSteerRL = new AnalogChannelVolt(RobotMap.portPotSteerRL);
     public AnalogChannelVolt potSteerRR = new AnalogChannelVolt(RobotMap.portPotSteerRR);
-    private SpeedController motorSteerFL = new Victor(RobotMap.portMotorSteerFL);
-    private SpeedController motorSteerFR = new Victor(RobotMap.portMotorSteerFR);
-    private SpeedController motorSteerRL = new Victor(RobotMap.portMotorSteerRL);
-    private SpeedController motorSteerRR = new Victor(RobotMap.portMotorSteerRR);
+    private SpeedController motorSteerFL = new Talon(RobotMap.portMotorSteerFL);
+    private SpeedController motorSteerFR = new Talon(RobotMap.portMotorSteerFR);
+    private SpeedController motorSteerRL = new Talon(RobotMap.portMotorSteerRL);
+    private SpeedController motorSteerRR = new Talon(RobotMap.portMotorSteerRR);
     public PIDController pidFR = new PIDController(RobotMap.P, RobotMap.I,
             RobotMap.D, RobotMap.F, potSteerFR, motorSteerFR, RobotMap.PERIOD);
     public PIDController pidFL = new PIDController(RobotMap.P, RobotMap.I,
@@ -35,10 +35,10 @@ public class SwerveDrive extends Subsystem {
             RobotMap.D, RobotMap.F, potSteerRR, motorSteerRR, RobotMap.PERIOD);
     public PIDController pidRL = new PIDController(RobotMap.P, RobotMap.I,
             RobotMap.D, RobotMap.F, potSteerRL, motorSteerRL, RobotMap.PERIOD);
-    private SpeedController motorDriveFL = new Victor(RobotMap.portMotorDriveFL);
-    private SpeedController motorDriveFR = new Victor(RobotMap.portMotorDriveFR);
-    private SpeedController motorDriveRL = new Victor(RobotMap.portMotorDriveRL);
-    private SpeedController motorDriveRR = new Victor(RobotMap.portMotorDriveRR);
+    private SpeedController motorDriveFL = new Talon(RobotMap.portMotorDriveFL);
+    private SpeedController motorDriveFR = new Talon(RobotMap.portMotorDriveFR);
+    private SpeedController motorDriveRL = new Talon(RobotMap.portMotorDriveRL);
+    private SpeedController motorDriveRR = new Talon(RobotMap.portMotorDriveRR);
     public I2C i2c;
     private boolean isUnwinding = false;
     private double robotAngle = 0.;

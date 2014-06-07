@@ -95,26 +95,26 @@ public class OI {
     }
     
     public double getImplementJoystickLeftX() {
-        if (Math.abs(xbox1.getRawAxis(1)) < deadZone) {
+        if (Math.abs(xbox2.getRawAxis(1)) < deadZone) {
             return 0;
         } else {
-            return xbox1.getRawAxis(1);
+            return xbox2.getRawAxis(1);
         }
     }
 
     public double getImplementJoystickLeftY() {
-        if (Math.abs(xbox1.getRawAxis(2)) < deadZone) {
+        if (Math.abs(xbox2.getRawAxis(2)) < deadZone) {
             return 0;
         } else {
-            return xbox1.getRawAxis(2);
+            return xbox2.getRawAxis(2);
         }
     }
 
     public double getImplementJoystickRightX() {
-        if (Math.abs(xbox1.getRawAxis(4)) < deadZone) {
+        if (Math.abs(xbox2.getRawAxis(4)) < deadZone) {
             return 0;
         } else {
-            return xbox1.getRawAxis(4);
+            return xbox2.getRawAxis(4);
         }
     }
 

@@ -38,10 +38,10 @@ public class AerialAssist extends IterativeRobot {
         // Initialize all subsystems
         CommandBase.init();
         CommandBase.drive.setWheelbase(21.5 / 2, 21.5 / 2);
+        CommandBase.pickup.compressorStart();
         smartDash = new SMDB();
         smartDash.setRunWhenDisabled(true);
         smartDash.start();
-        CommandBase.pickup.compressorStart();
     }
     
     public void disabledInit() {

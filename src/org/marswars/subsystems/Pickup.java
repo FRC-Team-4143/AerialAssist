@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.marswars.RobotMap;
+import org.marswars.commands.PickupDefault;
 
 public class Pickup extends Subsystem {
 
@@ -33,6 +34,7 @@ public class Pickup extends Subsystem {
     }
 
     public void initDefaultCommand() {
+        setDefaultCommand(new PickupDefault());
 
     }
     
@@ -47,6 +49,30 @@ public class Pickup extends Subsystem {
     public void open() {
         wingLeft.set(DoubleSolenoid.Value.kForward);
         wingRight.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void openLeftWing() {
+        wingLeft.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void closeLeftWing() {
+        wingLeft.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void stopLeftWing() {
+        wingLeft.set(DoubleSolenoid.Value.kOff);
+    }
+    
+    public void openRightWing() {
+        wingRight.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void closeRightWing() {
+        wingRight.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void stopRightWing() {
+        wingRight.set(DoubleSolenoid.Value.kOff);
     }
 
     public void close() {

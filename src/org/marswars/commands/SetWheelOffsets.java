@@ -18,13 +18,15 @@ public class SetWheelOffsets extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double FLOffset = drive.potSteerFL.getAverageVoltage() - 2.5;
-        double FROffset = drive.potSteerFR.getAverageVoltage() - 2.5;
-        double RLOffset = drive.potSteerRL.getAverageVoltage() - 2.5;
-        double RROffset = drive.potSteerRR.getAverageVoltage() - 2.5;
+        if (!m_Executed) {
+            double FLOffset = drive.potSteerFL.getAverageVoltage() - 2.5;
+            double FROffset = drive.potSteerFR.getAverageVoltage() - 2.5;
+            double RLOffset = drive.potSteerRL.getAverageVoltage() - 2.5;
+            double RROffset = drive.potSteerRR.getAverageVoltage() - 2.5;
 
-        drive.setOffsets(FLOffset, FROffset, RLOffset, RROffset);
-        m_Executed = true;
+            drive.setOffsets(FLOffset, FROffset, RLOffset, RROffset);
+            m_Executed = true;
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

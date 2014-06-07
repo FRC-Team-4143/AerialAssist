@@ -4,6 +4,7 @@ package org.marswars;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.marswars.commands.BackOpen;
 import org.marswars.commands.Launch;
 import org.marswars.commands.Pass;
 import org.marswars.commands.PickupClose;
@@ -40,9 +41,10 @@ public class OI {
     public OI() {
         // Controller 1
         new JoystickButton(xbox1, XboxController.ButtonType.kY.value).whenPressed(new ToggleRobotFront());
-        new JoystickButton(xbox1, XboxController.ButtonType.kX.value).whileHeld(new ToggleLock());
+        //new JoystickButton(xbox1, XboxController.ButtonType.kX.value).whileHeld(new ToggleLock());
         new JoystickButton(xbox1, XboxController.ButtonType.kA.value).whenPressed(new Launch());
         new JoystickButton(xbox1, XboxController.ButtonType.kB.value).whenPressed(new Pass());
+        new JoystickButton(xbox1, XboxController.ButtonType.kStart.value).whenPressed(new BackOpen());
         
         // Controller 2
         new JoystickButton(xbox2, XboxController.ButtonType.kL.value).whileHeld(new RollerLeft());
@@ -68,7 +70,7 @@ public class OI {
         SmartDashboard.putData("Stop Compressor", new StopCompressor());
     }
     
-    public double getJoystickLeftX() {
+    public double getDriveJoystickLeftX() {
         if (Math.abs(xbox1.getRawAxis(1)) < deadZone) {
             return 0;
         } else {
@@ -76,7 +78,7 @@ public class OI {
         }
     }
 
-    public double getJoystickLeftY() {
+    public double getDriveJoystickLeftY() {
         if (Math.abs(xbox1.getRawAxis(2)) < deadZone) {
             return 0;
         } else {
@@ -84,7 +86,31 @@ public class OI {
         }
     }
 
-    public double getJoystickRightX() {
+    public double getDriveJoystickRightX() {
+        if (Math.abs(xbox1.getRawAxis(4)) < deadZone) {
+            return 0;
+        } else {
+            return xbox1.getRawAxis(4);
+        }
+    }
+    
+    public double getImplementJoystickLeftX() {
+        if (Math.abs(xbox1.getRawAxis(1)) < deadZone) {
+            return 0;
+        } else {
+            return xbox1.getRawAxis(1);
+        }
+    }
+
+    public double getImplementJoystickLeftY() {
+        if (Math.abs(xbox1.getRawAxis(2)) < deadZone) {
+            return 0;
+        } else {
+            return xbox1.getRawAxis(2);
+        }
+    }
+
+    public double getImplementJoystickRightX() {
         if (Math.abs(xbox1.getRawAxis(4)) < deadZone) {
             return 0;
         } else {

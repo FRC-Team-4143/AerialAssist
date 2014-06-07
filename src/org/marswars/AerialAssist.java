@@ -41,6 +41,11 @@ public class AerialAssist extends IterativeRobot {
         smartDash = new SMDB();
         smartDash.setRunWhenDisabled(true);
         smartDash.start();
+        CommandBase.pickup.compressorStart();
+    }
+    
+    public void disabledInit() {
+        CommandBase.pickup.compressorStop();
     }
     
     public void disabledPeriodic() {

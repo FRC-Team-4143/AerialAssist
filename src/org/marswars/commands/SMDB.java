@@ -27,9 +27,9 @@ public class SMDB extends CommandBase {
         SmartDashboard.putNumber("FrontRightturns", drive.potSteerFR.getTurns());
         SmartDashboard.putNumber("RearLeftturns", drive.potSteerRL.getTurns());
         SmartDashboard.putNumber("RearRightturns", drive.potSteerRR.getTurns());
-        SmartDashboard.putNumber("StickX", oi.getJoystickLeftX());
-        SmartDashboard.putNumber("StickY", oi.getJoystickLeftY());
-        SmartDashboard.putNumber("StickZ", oi.getJoystickRightX());
+        SmartDashboard.putNumber("StickX", oi.getDriveJoystickLeftX());
+        SmartDashboard.putNumber("StickY", oi.getDriveJoystickLeftY());
+        SmartDashboard.putNumber("StickZ", oi.getDriveJoystickRightX());
         SmartDashboard.putData("FLpid", drive.pidFL);
         SmartDashboard.putNumber("FLError", drive.pidFL.getError());
         SmartDashboard.putNumber("FLoutput", drive.pidFL.get());
